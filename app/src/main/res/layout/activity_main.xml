@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="projet_commun.sciagoapp.MainActivity">
+
+    <timotheeb.sciagoapp.Header
+        android:background="@drawable/cropped_background"
+        android:layout_width="wrap_content"
+        android:layout_height="60.0dp" />
+
+
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30.0dp"
+            android:id="@+id/txtView_1"
+            android:text="Hello World!"
+            />
+
+        <ImageView
+            android:layout_height="50.0dp"
+            android:layout_width="50.0dp"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+</LinearLayout>
