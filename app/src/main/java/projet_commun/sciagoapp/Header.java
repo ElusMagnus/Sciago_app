@@ -35,32 +35,21 @@ public class Header extends View{
     public void onDraw(Canvas canvas){
         super.onDraw(canvas);
         Paint pinceau = new Paint();
-        float top1=5, right1=20, left1=140, bottom1=80;
-        float epaisseur1=120, epaisseur2=60.0f;
-        float imgLeft=500;
-        float nomAppX=650, nomAppY=50, txtY=nomAppY+50;
-        /*pinceau.setColor(0xff1128e3);
-        canvas.drawRect(top1, right1, left1, bottom1, pinceau);
+        float top1=5, left1=140, bottom1=80;
+        float epaisseur1=45.0f, epaisseur2=35.0f;
+        float imgLeft=350;
+        float nomAppX=430, nomAppY=90, txtX=nomAppX+100, txtY=nomAppY+60;
 
-        pinceau.setColor(Color.MAGENTA);
-        pinceau.setStyle(Paint.Style.STROKE);
-        pinceau.setStrokeWidth(epaisseur);
-        canvas.drawCircle(circleX, circleY, circleRadius, pinceau);     */
-
-        //Paint pinceau2 = new Paint();
-        /*
-        pinceau.setStrokeWidth(epaisseur2);
-        //pinceau2.setFakeBoldText(true);*/
-        //pinceau.setTextSize(TypedValue.COMPLEX_UNIT_DIP);
-        pinceau.setStrokeWidth(epaisseur1);
         pinceau.setColor(Color.WHITE);
         pinceau.setTypeface(Typeface.DEFAULT_BOLD);
-        canvas.drawText(nomApp, nomAppX, nomAppY, pinceau);
-        pinceau.setTypeface(Typeface.DEFAULT);
-        //pinceau.setStrokeWidth(epaisseur2);
-        pinceau.setTextSize(epaisseur2);
-        //canvas.setDensity();
-        canvas.drawText(slogan, nomAppX, txtY, pinceau);
+        pinceau.setTextSize(epaisseur1);
+        canvas.drawText(nomApp, txtX, nomAppY, pinceau);
+
+        Paint pinceau2 = new Paint();
+        pinceau2.setColor(Color.WHITE);
+        pinceau2.setTypeface(Typeface.DEFAULT);
+        pinceau2.setTextSize(epaisseur2);
+        canvas.drawText(slogan, txtX, txtY, pinceau2);
         canvas.drawBitmap(img, imgLeft, top1, pinceau);
     }
 }

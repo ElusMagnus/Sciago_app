@@ -29,6 +29,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    private boolean attempL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,12 +74,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
+
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    attempL = attemptLogin();
                     return true;
                 }
                 return false;
@@ -87,10 +91,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
-                Intent intent = new Intent(LoginActivity.this, Profile.class);
-                //intent.putExtra("user_email", mEmailView.getText().toString());
-                startActivity(intent);
+                if (attemptLogin()){
+                    Toast.makeText(LoginActivity.this, "Connexion réussie", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this, Profile.class);
+                    //intent.putExtra("user_email", mEmailView.getText().toString());
+                    startActivity(intent);
+                }else
+                    Toast.makeText(LoginActivity.this, "Echec de la connexion", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -147,10 +154,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
+    private boolean attemptLogin() {
+        //mAuthTask =
+        /*if (mAuthTask != null) {
+            Toast.makeText(LoginActivity.this, "mAuthTask != null ", Toast.LENGTH_LONG).show();
+            return true;
+        }*/
 
         // Reset errors.
         mEmailView.setError(null);
@@ -191,7 +200,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            return true;
         }
+        return false;
     }
 
     private boolean isEmailValid(String email) {
