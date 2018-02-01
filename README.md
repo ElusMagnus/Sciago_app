@@ -1,3 +1,3 @@
 # Sciago_app
 
-![img](https://imgur.com/a/qjBe2)
+![img](https://i.imgur.com/KPO5M9u.jpg)
