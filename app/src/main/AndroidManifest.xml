@@ -32,6 +32,15 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
+        <activity
+            android:name=".FundActivity"
+            android:label="@string/title_activity_fund"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="projet_commun.sciagoapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
