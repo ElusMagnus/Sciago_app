@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
                 if (attemptLogin()){
                     Toast.makeText(LoginActivity.this, "Connexion réussie", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, Profile.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     //intent.putExtra("user_email", mEmailView.getText().toString());
                     startActivity(intent);
                 }else

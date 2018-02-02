@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="projet_commun.sciagoapp.MainActivity">
 
-    <timotheeb.sciagoapp.Header
-        android:background="@drawable/cropped_background"
+    <TextView
+        android:id="@+id/message"
         android:layout_width="wrap_content"
-        android:layout_height="60.0dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/title_home"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
 
-
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30.0dp"
-            android:id="@+id/txtView_1"
-            android:text="Hello World!"
-            />
-
-        <ImageView
-            android:layout_height="50.0dp"
-            android:layout_width="50.0dp"
-            android:contentDescription=""
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
