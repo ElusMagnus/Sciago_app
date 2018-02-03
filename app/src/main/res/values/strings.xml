@@ -5,8 +5,10 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="notHaveAccount">New to Sciago ?</string>
+    <string name="action_register">Register</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -14,4 +16,15 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="onglet_1">Home</string>
+    <string name="onglet_2">Fund</string>
+    <string name="onglet_3">Connect</string>
+    <string name="onglet_4">Reward</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_fund">FundActivity</string>
+    <string name="title_activity_connect">ConnectActivity</string>
+    <string name="title_activity_bottom_bar_activity">BottomBarActivity</string>
+    <string name="title_activity_bottom_bar_fragment">BottomBarFragment</string>
 </resources>

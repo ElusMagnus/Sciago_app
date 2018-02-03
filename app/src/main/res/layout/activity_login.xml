@@ -9,6 +9,7 @@
 
 
     <projet_commun.sciagoapp.Header
+        android:id="@+id/header"
         android:background="@drawable/cropped_background"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/header_height" />
@@ -79,8 +80,25 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/action_sign_in"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textAlignment="center"
+                android:textColor="@color/colorOrangeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35.0dp"
+                android:text="@string/notHaveAccount"/>
+
+            <Button
+                android:id="@+id/email_register_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@string/action_register"
                 android:textStyle="bold" />
 
         </LinearLayout>
