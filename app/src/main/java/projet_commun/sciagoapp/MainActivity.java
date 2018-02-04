@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
+
 
 
     private static final String TAG_FRAGMENT_HOME = "tag_frag_home";
@@ -38,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        HomeFragment homeFragment = new HomeFragment();
+                        FundFragment fundFragment = new FundFragment();
                         switch (item.getItemId()) {
                             case R.id.action_onglet_1:
-                                switchFragment(0, TAG_FRAGMENT_HOME);
+                                transaction.replace(R.id.frame_fragmentholder, homeFragment).commit();
+                                //switchFragment(0, TAG_FRAGMENT_HOME);
                                 return true;
                             case R.id.action_onglet_2:
-                                switchFragment(1, TAG_FRAGMENT_FUND);
+                                transaction.replace(R.id.frame_fragmentholder, fundFragment).commit();
+                                //switchFragment(1, TAG_FRAGMENT_FUND);
                                 return true;
                             case R.id.action_onglet_3:
                                 switchFragment(2, TAG_FRAGMENT_CONNECT);
@@ -59,8 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
         buildFragmentsList();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_fragmentholder, new HomeFragment()).commit();
+
         // Set the 0th Fragment to be displayed by default.
-        switchFragment(0, TAG_FRAGMENT_HOME);
+        //switchFragment(0, TAG_FRAGMENT_HOME);
     }
 
     private void switchFragment(int pos, String tag) {
@@ -88,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
      * @param title
      * @return
      */
+
     private BottomBarFragment buildFragment(String title) {
         BottomBarFragment fragment = new BottomBarFragment();
         Bundle bundle = new Bundle();

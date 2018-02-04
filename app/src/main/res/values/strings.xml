@@ -27,4 +27,9 @@
     <string name="title_activity_connect">ConnectActivity</string>
     <string name="title_activity_bottom_bar_activity">BottomBarActivity</string>
     <string name="title_activity_bottom_bar_fragment">BottomBarFragment</string>
+
+    <string name="home_fragment">Home fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
