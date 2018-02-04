@@ -18,6 +18,8 @@ import java.util.List;
 public class BottomBarFragment extends android.support.v4.app.Fragment {
 
     public static final String ARG_TITLE = "arg_title";
+    private static final String ITEM_1 = "Home";
+    private static final String ITEM_2 = "Fund";
     private static final String ITEM_3 = "Connect";
 
     private TextView textView;
@@ -37,7 +39,12 @@ public class BottomBarFragment extends android.support.v4.app.Fragment {
 
         View rootView = null;
         // Inflate the layout for this fragment
-        if (title.equals(ITEM_3)){
+        if (title.equals(ITEM_1)) {
+            rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        }
+        else if (title.equals(ITEM_2)) {
+            rootView = inflater.inflate(R.layout.fragment_fund, container, false);
+        }else if (title.equals(ITEM_3)){
             rootView = inflater.inflate(R.layout.fragment_connect, container, false);
         }else
             rootView = inflater.inflate(R.layout.fragment_bottom_bar, container, false);

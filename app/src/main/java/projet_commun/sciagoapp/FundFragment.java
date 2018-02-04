@@ -72,7 +72,6 @@ public class FundFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_fund, container, false);
 
         final ArrayList<String> data = new ArrayList<>();
@@ -95,9 +94,9 @@ public class FundFragment extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
 
-        ListView listView = (ListView) view.findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView fund_listView = (ListView) view.findViewById(R.id.fund_listView);
+        fund_listView.setAdapter(adapter);
+        fund_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedData = data.get(i);
@@ -107,7 +106,7 @@ public class FundFragment extends Fragment {
                 bundle.putString("selected_data", selectedData);
                 detailFundFragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_fund_layout, detailFundFragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_fund, detailFundFragment).commit();
             }
         });
 

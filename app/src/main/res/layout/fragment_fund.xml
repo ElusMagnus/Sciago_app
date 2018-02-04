@@ -1,15 +1,77 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_fund_layout"
+    android:id="@+id/fragment_fund"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="projet_commun.sciagoapp.FundFragment">
+    android:orientation="vertical"
+    android:scrollbars="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/connect_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3.0dp"
+        android:text="@string/fund_title_header"
+        android:textAlignment="center"
+        android:textColor="@color/colorDark"
+        android:textSize="18sp" />
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="397dp"
-        android:layout_height="571dp" />
-</android.support.constraint.ConstraintLayout>
+    <SearchView
+        android:id="@+id/searchView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dp"
+        android:background="@color/colorOrangeLogo">
+
+    </SearchView>
+
+    <!--ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14.0dp"/-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/buttonRecherche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:layout_weight="1"
+            android:text="@string/fund_btn_recherche" />
+
+        <Button
+            android:id="@+id/buttonRechercheAvancee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:layout_weight="1"
+            android:text="@string/fund_btn_rechercheAvancee" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_fund_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dp"
+        android:layout_marginRight="5.0dp"
+        android:layout_marginTop="20.0dp"
+        android:isScrollContainer="true"
+        app:layout_scrollFlags="scroll|enterAlways|snap">
+
+
+        <ListView
+            android:id="@+id/fund_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</LinearLayout>
