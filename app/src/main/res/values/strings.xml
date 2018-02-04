@@ -27,4 +27,10 @@
     <string name="title_activity_connect">ConnectActivity</string>
     <string name="title_activity_bottom_bar_activity">BottomBarActivity</string>
     <string name="title_activity_bottom_bar_fragment">BottomBarFragment</string>
+
+    <string name="connect_title_header">Base de chercheurs</string>
+    <string name="connect_btn_recherche">rechercher</string>
+    <string name="connect_btn_rechercheAvancee">Recherche avancé</string>
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

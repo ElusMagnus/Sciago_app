@@ -1,48 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_connect"
     android:orientation="vertical"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="projet_commun.sciagoapp.MainActivity">
+    android:scrollbars="vertical">
 
-    <projet_commun.sciagoapp.Header
-        android:id="@+id/header"
-        android:background="@drawable/cropped_background"
+    <TextView
+        android:textColor="@color/colorDark"
+        android:id="@+id/connect_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3.0dp"
+        android:text="@string/connect_title_header"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <SearchView
+        android:background="@color/colorOrangeLogo"
+        android:id="@+id/searchView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dp">
+
+    </SearchView>
+
+    <!--ImageButton
+        android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/header_height" />
-
-    <!--TextView
-        android:layout_below="@+id/header"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/txtView_1"
-        android:layout_width="wrap_content"
-        android:layout_height="30.0dp"
-        android:layout_marginTop="14.0dp"
-        android:text="@string/onglet_1" /-->
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14.0dp"/-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
 
-        <FrameLayout
-            android:layout_below="@id/header"
-            android:id="@+id/frame_fragmentholder"
-            android:layout_marginBottom="65dp"
+        <Button
+            android:id="@+id/buttonRecherche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:layout_weight="1"
+            android:text="@string/connect_btn_recherche"/>
+
+        <Button
+            android:id="@+id/buttonRechercheAvancee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:layout_weight="1"
+            android:text="@string/connect_btn_rechercheAvancee" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+    </LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:layout_marginLeft="5.0dp"
+        android:layout_marginRight="5.0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20.0dp"
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        android:isScrollContainer="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:orientation="horizontal">
 
-            >
-            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+            <QuickContactBadge
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Badge de contact"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_profile"/>
 
-
-            <!--TextView
-                android:layout_marginBottom="10.0dp"
-                android:layout_marginTop="10.0dp"
+            <TextView
+                android:id="@+id/nomChercheur"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50.0dp"
+                android:contentDescription="Nom de contact"
+                android:text="Jean Michel DUPONT" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35.0dp"
+            android:orientation="horizontal">
+
+            <QuickContactBadge
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Badge de contact"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_profile"/>
+
+            <TextView
+                android:id="@+id/nomChercheur2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50.0dp"
+                android:contentDescription="Nom de contact"
+                android:text="Claude MARTIN" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65.0dp"
+            android:orientation="horizontal">
+
+            <QuickContactBadge
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Badge de contact"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_profile"/>
+
+            <TextView
+                android:id="@+id/nomChercheur3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50.0dp"
+                android:contentDescription="Nom de contact"
+                android:text="Pierre PHILIPPE" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110.0dp">
+
+            <TextView
+                android:layout_marginBottom="2.0dp"
+                android:layout_marginTop="2.0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
                 android:text="
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at erat eget risus faucibus finibus. Nunc commodo congue turpis at fermentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vel magna sapien. Sed eu est venenatis, congue est ut, rutrum orci. Donec finibus, eros posuere commodo tempus, felis leo elementum sapien, vel auctor diam mi sit amet justo. Nulla dignissim suscipit euismod. Suspendisse vel iaculis eros. Nullam eleifend euismod enim. Morbi pharetra nisi nec diam efficitur, id accumsan massa congue. Etiam pulvinar diam iaculis aliquet lobortis. Praesent mollis velit eu erat pharetra, in convallis ligula rutrum. In condimentum posuere dui, eu dignissim augue feugiat nec. Ut facilisis auctor lorem, a maximus ex semper id. Sed ut mattis turpis. Sed consectetur nulla vel fermentum feugiat.
@@ -64,22 +179,8 @@ Etiam pretium tellus in accumsan fermentum. Sed eget ante massa. Integer vestibu
 Cras vitae mauris nulla. Sed tincidunt ac lacus nec maximus. Fusce dictum, arcu sit amet tincidunt commodo, orci magna eleifend mi, vel pulvinar dui lectus vel elit. Proin vulputate, magna at commodo imperdiet, velit eros tincidunt elit, in dapibus ipsum nulla ut mi. Nam vel urna ex. Morbi consectetur bibendum scelerisque. Praesent felis tortor, congue eu dolor in, egestas ornare odio.
 
 Ut pulvinar condimentum urna, in elementum magna suscipit vel. Ut pretium dapibus elit id condimentum. Maecenas egestas porttitor lectus quis ullamcorper. Etiam at purus sapien. Integer vel posuere sem. Fusce pulvinar lectus augue, nec aliquet sapien sollicitudin in. Proin porttitor turpis dui, eu malesuada metus convallis a. Nullam suscipit elit ac accumsan efficitur. Vivamus eget efficitur urna. Sed consequat odio sem.
-"/-->
+"/>
+        </LinearLayout>
+    </FrameLayout>
 
-        </FrameLayout>
-
-    <!--android.support.design.widget.BottomNavigationView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"/-->
-    
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="65.0dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorOrangeLogo"
-        app:itemIconTint="@animator/nav_item_state_list"
-        app:itemTextColor="@animator/nav_item_state_list"
-        app:menu="@menu/bottom_navigation_items" />
-
-</RelativeLayout>
+</LinearLayout>

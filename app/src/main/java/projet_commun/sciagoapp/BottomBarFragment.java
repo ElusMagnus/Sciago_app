@@ -18,24 +18,33 @@ import java.util.List;
 public class BottomBarFragment extends android.support.v4.app.Fragment {
 
     public static final String ARG_TITLE = "arg_title";
+    private static final String ITEM_3 = "Connect";
 
     private TextView textView;
+
+
 
     public BottomBarFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_bottom_bar, container, false);
-
-        textView = (TextView) rootView.findViewById(R.id.fragment_bottom_bar_text_activetab);
 
         String title = getArguments().getString(ARG_TITLE, "");
-        textView.setText(title);
+        //System.err.println("######("+title+")######");
+
+        View rootView = null;
+        // Inflate the layout for this fragment
+        if (title.equals(ITEM_3)){
+            rootView = inflater.inflate(R.layout.fragment_connect, container, false);
+        }else
+            rootView = inflater.inflate(R.layout.fragment_bottom_bar, container, false);
+
+        //textView = (TextView) rootView.findViewById(R.id.fragment_bottom_bar_text_activetab);
+
+        //textView.setText(title);
 
         return rootView;
     }
