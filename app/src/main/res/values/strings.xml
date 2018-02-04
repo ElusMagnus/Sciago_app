@@ -28,8 +28,9 @@
     <string name="title_activity_bottom_bar_activity">BottomBarActivity</string>
     <string name="title_activity_bottom_bar_fragment">BottomBarFragment</string>
 
-    <string name="home_fragment">Home fragment</string>
+    <string name="connect_title_header">Base de chercheurs</string>
+    <string name="connect_btn_recherche">rechercher</string>
+    <string name="connect_btn_rechercheAvancee">Recherche avancé</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

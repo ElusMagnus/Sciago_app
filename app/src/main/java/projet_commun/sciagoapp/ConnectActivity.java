@@ -17,51 +17,5 @@ import android.view.MenuItem;
 
 public class ConnectActivity extends AppCompatActivity{
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            switch (item.getItemId()) {
-
-                case R.id.action_onglet_1:
-                    item.setChecked(true);
-                    Intent intent = new Intent(ConnectActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.action_onglet_2:
-                    item.setChecked(true);
-
-                    break;
-
-                case R.id.action_onglet_3:
-                    item.setChecked(true);
-                    break;
-
-                case R.id.action_onglet_4:
-                    item.setChecked(true);
-
-                    break;
-            }
-            return true;
-        }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connect);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        //MenuItem item3 = (MenuItem) findViewById(R.id.action_onglet_3);
-        //item3.setChecked(true);
-        //BottomNavigationItemView item3 = (BottomNavigationItemView) findViewById(R.id.menu_items);
-        //MenuView.ItemView item3 = (MenuView.ItemView) findViewById(R.id.action_onglet_3);
-        //item3.setChecked(true);
-        //Menu menu = (Menu) findViewById(R.id.menu_items);
-        //menu.getItem(3).setChecked(true);
-        //BottomNavigationItemView bottomNav = (BottomNavigationItemView) findViewById(R.id.bottom_navigation)
-
-    }
 
 }
