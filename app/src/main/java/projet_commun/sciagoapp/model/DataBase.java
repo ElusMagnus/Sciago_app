@@ -6,12 +6,26 @@ import java.util.Map;
 
 public class DataBase {
 
+    private Map<Integer, ArrayList<String>> listeFinancements;
     private Map<Integer, ArrayList<String>> listeChercheurs;
 
     public DataBase(){
+        listeFinancements = new HashMap<Integer, ArrayList<String>>();
         listeChercheurs = new HashMap<Integer, ArrayList<String>>();
     }
 
+    public void connexion(){
+
+    }
+
+
+    /**
+     * @return la liste des financements
+     */
+    public Map<Integer, ArrayList<String>> getListeFinancements(){
+
+        return listeFinancements;
+    }
 
     /**
      * @return la liste des chercheurs (prénom nom, profession)
