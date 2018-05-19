@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         //HomeFragment homeFragment = new HomeFragment();
                         FundFragment fundFragment = new FundFragment();
+                        ConnectFragment connectFragment = new ConnectFragment();
                         switch (item.getItemId()) {
                             case R.id.action_onglet_1:
                                 //transaction.replace(R.id.frame_fragmentholder, homeFragment).commit();
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                                 //switchFragment(1, TAG_FRAGMENT_FUND);
                                 return true;
                             case R.id.action_onglet_3:
-                                switchFragment(2, TAG_FRAGMENT_CONNECT);
+                                transaction.replace(R.id.frame_fragmentholder, connectFragment).commit();
+                                //switchFragment(2, TAG_FRAGMENT_CONNECT);
                                 return true;
                             case R.id.action_onglet_4:
                                 switchFragment(3, TAG_FRAGMENT_REWARD);

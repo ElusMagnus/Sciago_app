@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_connect"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:scrollbars="vertical">
 
     <TextView
@@ -63,7 +63,6 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
         </Spinner>
     </LinearLayout>
 
@@ -71,15 +70,24 @@
 
 
     <FrameLayout
+        android:id="@+id/fragment_connect_layout"
         android:layout_marginLeft="5.0dp"
         android:layout_marginRight="5.0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20.0dp"
-        app:layout_scrollFlags="scroll|enterAlways|snap"
-        android:isScrollContainer="true">
+        android:isScrollContainer="true"
+        app:layout_scrollFlags="scroll|enterAlways|snap">
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/connect_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:listSelector="@drawable/list_selector">
+
+        </ListView>
+
+        <!--LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5.0dp"
@@ -180,7 +188,7 @@ Cras vitae mauris nulla. Sed tincidunt ac lacus nec maximus. Fusce dictum, arcu 
 
 Ut pulvinar condimentum urna, in elementum magna suscipit vel. Ut pretium dapibus elit id condimentum. Maecenas egestas porttitor lectus quis ullamcorper. Etiam at purus sapien. Integer vel posuere sem. Fusce pulvinar lectus augue, nec aliquet sapien sollicitudin in. Proin porttitor turpis dui, eu malesuada metus convallis a. Nullam suscipit elit ac accumsan efficitur. Vivamus eget efficitur urna. Sed consequat odio sem.
 "/>
-        </LinearLayout>
+        </LinearLayout-->
     </FrameLayout>
 
 </LinearLayout>

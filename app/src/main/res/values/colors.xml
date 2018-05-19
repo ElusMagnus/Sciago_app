@@ -6,6 +6,7 @@
     <color name="colorAccent">#DC742C</color>  <!-- #FF4081 -->
     <color name="colorDark">#001020</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#e2dfde</color>
     <color name="colorPrimary">#001020</color>
     <color name="nav_item_state_list">@color/colorDark</color>
     <color name="mainTabInactive">@color/colorDark</color>
