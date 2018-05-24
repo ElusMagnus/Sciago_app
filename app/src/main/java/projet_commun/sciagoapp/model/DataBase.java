@@ -9,10 +9,32 @@ public class DataBase {
     private Map<Integer, ArrayList<String>> listeFinancements;
     private Map<Integer, ArrayList<String>> listeChercheurs;
 
-    public DataBase(){
+    String title;
+    String desc;
+    int icon;
+
+    /*public DataBase(){
         listeFinancements = new HashMap<Integer, ArrayList<String>>();
         listeChercheurs = new HashMap<Integer, ArrayList<String>>();
+    }*/
+
+    public DataBase(String title, String desc, int icon){
+        this.title = title;
+        this.desc = desc;
+        this.icon = icon;
     }
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getDesc() {
+        return this.desc;
+    }
+
+    public int getIcon() {
+        return this.icon;
+    }
+
 
     public void connexion(){
 

@@ -1,5 +1,6 @@
 package projet_commun.sciagoapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import projet_commun.sciagoapp.model.DataBase;
@@ -25,7 +27,16 @@ public class ConnectFragment extends Fragment{
     private String mParam1;
     private String mParam2;
 
+    ListView connect_listView;
+    ListViewConnectAdapter connectAdapter;
+    String[] title;
+    String[] description;
+    int[] icon;
+    ArrayList<DataBase> arrayList = new ArrayList<>();
+
     private OnFragmentInteractionListener mListener;
+
+    private LazyAdapter adapter2;
 
     public ConnectFragment(){
         // Required empty public constructor
@@ -60,13 +71,13 @@ public class ConnectFragment extends Fragment{
 
         final ArrayList<String> data = new ArrayList<>();
         //Appel à la base de données !
-        DataBase db = new DataBase();
-        Map<Integer, ArrayList<String>> listeChercheurs = db.getListeChercheurs();
+        //DataBase db = new DataBase();
+        //Map<Integer, ArrayList<String>> listeChercheurs = db.getListeChercheurs();
 
-        data.add(listeChercheurs.get(0).get(0));
-        data.add(listeChercheurs.get(0).get(1));
-        data.add(listeChercheurs.get(1).get(0));
-        data.add(listeChercheurs.get(1).get(1));
+        //data.add(listeChercheurs.get(0).get(0));
+        //data.add(listeChercheurs.get(0).get(1));
+        //data.add(listeChercheurs.get(1).get(0));
+        //data.add(listeChercheurs.get(1).get(1));
         data.add("Mission 2");
         data.add("Prénom nom Chercheur 3");
         data.add("Financement 5");
@@ -80,10 +91,37 @@ public class ConnectFragment extends Fragment{
         data.add("Mission 7");
         data.add("Mission 8");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
+        title = new String[]{"Battery", "Cpu", "Display", "Memory", "Sensor"};
+        description = new String[]{"Battery detail...", "Cpu detail...", "Display detail...", "Memory detail...", "Sensor detail..."};
+        icon = new int[]{R.drawable.ic_profile, R.drawable.ic_profile, R.drawable.ic_person_profile, R.drawable.ic_profile, R.drawable.ic_profile};
 
-        ListView connect_listView = (ListView) view.findViewById(R.id.connect_listView);
-        connect_listView.setAdapter(adapter);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
+        connect_listView = (ListView) view.findViewById(R.id.connect_listView);
+
+        for (int i =0; i<title.length; i++){
+            DataBase model = new DataBase(title[i], description[i], icon[i]);
+            //bind all strings in an array
+            arrayList.add(model);
+        }
+
+        //pass results to listViewAdapter class
+        connectAdapter = new ListViewConnectAdapter(this.getContext(), arrayList);   //(this, arrayList)
+
+        //bind the adapter to the listview
+        connect_listView.setAdapter(connectAdapter);
+
+
+
+
+        /*ArrayList<HashMap<String, String>> arrayListChercheurs = new ArrayList<>();
+        HashMap<String, String> hm = new HashMap<>();
+        hm.put(listeChercheurs.get(0).get(0), listeChercheurs.get(0).get(1));
+        arrayListChercheurs.add(0, hm);
+        Activity a = null;
+        adapter2 = new LazyAdapter(a, arrayListChercheurs);
+        connect_listView.setAdapter(adapter2);*/
+
+        /*connect_listView.setAdapter(connectAdapter);
         connect_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -100,7 +138,7 @@ public class ConnectFragment extends Fragment{
                 //FragmentManager fragmentManager = getFragmentManager();
                 //fragmentManager.beginTransaction().replace(R.id.fragment_connect, detailFundFragment).commit();
             }
-        });
+        });*/
 
         return view;
         //return super.onCreateView(inflater, container, savedInstanceState);

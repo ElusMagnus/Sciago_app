@@ -20,9 +20,9 @@ public class LazyAdapter extends BaseAdapter {
     //public ImageLoader imageLoader;
 
     public LazyAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
-        activity = a;
+        //activity = a;
         data=d;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //imageLoader=new ImageLoader(activity.getApplicationContext());
     }
 
@@ -39,21 +39,21 @@ public class LazyAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View vi=convertView;
-        if(convertView==null)
-            vi = inflater.inflate(R.layout.list_researchers, null);
+        View vi = convertView;
+        /*if(convertView==null)
+            vi = inflater.inflate(R.layout.list_researchers, null);*/
 
-        TextView title = (TextView)vi.findViewById(R.id.title); // title
-        TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
+        TextView title = (TextView)vi.findViewById(R.id.mainTitle); // title
+        TextView artist = (TextView)vi.findViewById(R.id.mainDesc); // artist name
         TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
-        ImageView thumb_image =(ImageView)vi.findViewById(R.id.list_image); // thumb image
+        ImageView thumb_image =(ImageView)vi.findViewById(R.id.mainIcon); // thumb image
 
         HashMap<String, String> song = new HashMap<String, String>();
         song = data.get(position);
 
         // Setting all values in listview
         title.setText(song.get("Daniel Diaz"));
-        artist.setText(song.get("Enseignant chercheur "));
+        artist.setText(song.get("Enseignant chercheur !"));
         duration.setText(song.get("17:09"));
         //imageLoader.DisplayImage(song.get(""), thumb_image);
 
