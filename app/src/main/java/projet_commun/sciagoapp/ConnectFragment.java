@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,9 +94,30 @@ public class ConnectFragment extends Fragment{
         data.add("Mission 7");
         data.add("Mission 8");
 
-        title = new String[]{"Battery", "Cpu", "Display", "Memory", "Sensor"};
-        description = new String[]{"Battery detail...", "Cpu detail...", "Display detail...", "Memory detail...", "Sensor detail..."};
-        icon = new int[]{R.drawable.ic_profile, R.drawable.ic_profile, R.drawable.ic_person_profile, R.drawable.ic_profile, R.drawable.ic_profile};
+
+        SearchView searchView = (SearchView)view.findViewById(R.id.searchViewChercheurs);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (TextUtils.isEmpty(s)){
+                    connectAdapter.filter("");
+                    connect_listView.clearTextFilter();
+                }
+                else {
+                    connectAdapter.filter(s);
+                }
+                return true;
+            }
+        });
+
+        title = new String[]{"Daniel Diaz", "Rebeca Denecker", "Christophe James", "Memory", "Sensor", "Titre autre"};
+        description = new String[]{"Enseignant chercheur - Paris 1 Panthéon Sorbonne", "Cpu detail...", "Display detail...", "Memory detail...", "Sensor detail...", "Autre"};
+        icon = new int[]{R.drawable.ic_profile, R.drawable.ic_profile, R.drawable.ic_person_profile, R.drawable.ic_profile, R.drawable.ic_profile, R.drawable.ic_profile};
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
         connect_listView = (ListView) view.findViewById(R.id.connect_listView);

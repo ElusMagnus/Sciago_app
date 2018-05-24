@@ -50,7 +50,6 @@ public class BottomBarFragment extends android.support.v4.app.Fragment {
             rootView = inflater.inflate(R.layout.fragment_bottom_bar, container, false);
 
         //textView = (TextView) rootView.findViewById(R.id.fragment_bottom_bar_text_activetab);
-
         //textView.setText(title);
 
         return rootView;

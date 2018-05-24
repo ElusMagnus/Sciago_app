@@ -45,7 +45,7 @@ public class LazyAdapter extends BaseAdapter {
 
         TextView title = (TextView)vi.findViewById(R.id.mainTitle); // title
         TextView artist = (TextView)vi.findViewById(R.id.mainDesc); // artist name
-        TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
+        //TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
         ImageView thumb_image =(ImageView)vi.findViewById(R.id.mainIcon); // thumb image
 
         HashMap<String, String> song = new HashMap<String, String>();
@@ -54,7 +54,7 @@ public class LazyAdapter extends BaseAdapter {
         // Setting all values in listview
         title.setText(song.get("Daniel Diaz"));
         artist.setText(song.get("Enseignant chercheur !"));
-        duration.setText(song.get("17:09"));
+        //duration.setText(song.get("17:09"));
         //imageLoader.DisplayImage(song.get(""), thumb_image);
 
         //Image de profile

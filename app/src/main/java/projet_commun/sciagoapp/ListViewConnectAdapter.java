@@ -77,41 +77,42 @@ public class ListViewConnectAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 //code later
-                Intent intent = new Intent(mContext, NewActivity.class);
-                intent.putExtra("actionBarTitle", "Sensor");
-                intent.putExtra("contentTv", "This is Sensor detail...");
+                Intent intent = new Intent(mContext, Profile.class);
+                //intent.putExtra("actionBarTitle", "Sensor");
+                intent.putExtra("contentTv", modellist.get(position).getTitle());
+                intent.putExtra("descTv", modellist.get(position).getDesc());
                 mContext.startActivity(intent);
                 /*if (modellist.get(position).getTitle().equals("Battery")){
-                    //start NewActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, NewActivity.class);
+                    //start Profile with title for actionbar and text for textview
+                    Intent intent = new Intent(mContext, Profile.class);
                     intent.putExtra("actionBarTitle", "Battery");
                     intent.putExtra("contentTv", "This is Battery detail...");
                     mContext.startActivity(intent);
                 }
                 if (modellist.get(postition).getTitle().equals("Cpu")){
-                    //start NewActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, NewActivity.class);
+                    //start Profile with title for actionbar and text for textview
+                    Intent intent = new Intent(mContext, Profile.class);
                     intent.putExtra("actionBarTitle", "Cpu");
                     intent.putExtra("contentTv", "This is Cpu detail...");
                     mContext.startActivity(intent);
                 }
                 if (modellist.get(postition).getTitle().equals("Display")){
-                    //start NewActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, NewActivity.class);
+                    //start Profile with title for actionbar and text for textview
+                    Intent intent = new Intent(mContext, Profile.class);
                     intent.putExtra("actionBarTitle", "Display");
                     intent.putExtra("contentTv", "This is Display detail...");
                     mContext.startActivity(intent);
                 }
                 if (modellist.get(postition).getTitle().equals("Memory")){
-                    //start NewActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, NewActivity.class);
+                    //start Profile with title for actionbar and text for textview
+                    Intent intent = new Intent(mContext, Profile.class);
                     intent.putExtra("actionBarTitle", "Memory");
                     intent.putExtra("contentTv", "This is Memory detail...");
                     mContext.startActivity(intent);
                 }
                 if (modellist.get(postition).getTitle().equals("Sensor")){
-                    //start NewActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, NewActivity.class);
+                    //start Profile with title for actionbar and text for textview
+                    Intent intent = new Intent(mContext, Profile.class);
                     intent.putExtra("actionBarTitle", "Sensor");
                     intent.putExtra("contentTv", "This is Sensor detail...");
                     mContext.startActivity(intent);
@@ -123,6 +124,7 @@ public class ListViewConnectAdapter extends BaseAdapter{
 
     //filter
     public void filter(String charText){
+        System.err.println("### FILTER ###");
         charText = charText.toLowerCase(Locale.getDefault());
         modellist.clear();
         if (charText.length()==0){
@@ -131,6 +133,8 @@ public class ListViewConnectAdapter extends BaseAdapter{
         else {
             for (DataBase model : arrayList){
                 if (model.getTitle().toLowerCase(Locale.getDefault())
+                        .contains(charText)
+                        || model.getDesc().toLowerCase(Locale.getDefault())
                         .contains(charText)){
                     modellist.add(model);
                 }

@@ -32,8 +32,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".NewActivity"
-            android:parentActivityName=".MainActivity"/>
+        <!--activity android:name=".Profile"
+            android:parentActivityName=".MainActivity"/-->
         <!--activity
             android:name=".BottomBarActivity"
             android:label="@string/title_activity_bottom_bar_activity">
