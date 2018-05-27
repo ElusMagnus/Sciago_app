@@ -1,13 +1,25 @@
 package projet_commun.sciagoapp;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
+
+    /*FragmentManager fragmentManager;
+    FragmentTransaction transaction;
+    ConnectFragment connectFragment;*/
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +27,18 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         //ActionBar actionBar = getSupportActionBar();
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        //android.support.design.internal.BottomNavigationItemView
+        BottomNavigationItemView onglet1 = (BottomNavigationItemView) findViewById(R.id.action_onglet_1);
+        onglet1.setChecked(false);
+        //int color = getResources().getColor(R.color.mainTabInactive);
+        //onglet1.setBackgroundColor(color);
+
+        BottomNavigationItemView onglet3 = (BottomNavigationItemView) findViewById(R.id.action_onglet_3);
+        onglet3.setChecked(true);
+        BottomNavigationItemView onglet4 = (BottomNavigationItemView) findViewById(R.id.action_onglet_4);
+        onglet4.setChecked(false);
+
         TextView mDetailTv = (TextView) findViewById(R.id.textView1);
         TextView mDescTv = (TextView) findViewById(R.id.textView2);
         EditText champ = (EditText) findViewById(R.id.editTextChamp);

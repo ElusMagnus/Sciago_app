@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
      * Maintains a list of Fragments for {@link BottomNavigationView}
      */
     private List<BottomBarFragment> fragments = new ArrayList<>(4);
+    FragmentManager fragmentManager;
+    FragmentTransaction transaction;
+    HomeFragment homeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        //HomeFragment homeFragment = new HomeFragment();
+                        fragmentManager = getSupportFragmentManager();
+                        transaction = fragmentManager.beginTransaction();
+                        homeFragment = new HomeFragment();
                         FundFragment fundFragment = new FundFragment();
                         ConnectFragment connectFragment = new ConnectFragment();
                         switch (item.getItemId()) {
                             case R.id.action_onglet_1:
-                                //transaction.replace(R.id.frame_fragmentholder, homeFragment).commit();
-                                switchFragment(0, TAG_FRAGMENT_HOME);
+                                transaction.replace(R.id.frame_fragmentholder, homeFragment).commit();
+                                //switchFragment(0, TAG_FRAGMENT_HOME);
                                 return true;
                             case R.id.action_onglet_2:
                                 transaction.replace(R.id.frame_fragmentholder, fundFragment).commit();
@@ -75,7 +78,11 @@ public class MainActivity extends AppCompatActivity {
         //transaction.replace(R.id.frame_fragmentholder, new HomeFragment()).commit();
 
         // Set the 0th Fragment to be displayed by default.
-        switchFragment(0, TAG_FRAGMENT_HOME);
+        //switchFragment(0, TAG_FRAGMENT_HOME);
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        homeFragment = new HomeFragment();
+        transaction.replace(R.id.frame_fragmentholder, homeFragment).commit();
     }
 
     private void switchFragment(int pos, String tag) {

@@ -71,9 +71,6 @@
         </Spinner>
     </LinearLayout-->
 
-
-
-
     <FrameLayout
         android:id="@+id/fragment_connect_layout"
         android:layout_marginLeft="5.0dp"
