@@ -3,8 +3,14 @@
     <string name="slogan_sciago">La recherche autrement</string>
 
     <!-- Strings related to login -->
+    <string name="prompt_firstName">First name</string>
+    <string name="prompt_surname">Surname</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_status_researcher">Status</string>
+    <string name="prompt_institution">Institution</string>
+    <string name="prompt_description">Description</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_passwordConfirm">Confirm password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="notHaveAccount">New to Sciago ?</string>
