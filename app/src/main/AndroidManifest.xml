@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--  Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -42,6 +44,13 @@
             android:name=".BottomBarFragment"
             android:label="@string/title_activity_bottom_bar_fragment">
         </activity-->
+
+        <!-- Register Activity -->
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Add New User" >
+        </activity>
+
     </application>
 
 </manifest>
