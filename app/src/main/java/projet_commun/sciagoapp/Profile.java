@@ -3,6 +3,7 @@ package projet_commun.sciagoapp;
 import android.content.ClipData;
 import android.content.Intent;
 import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +32,11 @@ public class Profile extends AppCompatActivity {
         //android.support.design.internal.BottomNavigationItemView
         BottomNavigationItemView onglet1 = (BottomNavigationItemView) findViewById(R.id.action_onglet_1);
         onglet1.setChecked(false);
+        //onglet1.setCheckable();
+        //onglet1.setKeepScreenOn();
+        //onglet1.setEnabled();
+        //onglet1.setShiftingMode(false);
+
         //int color = getResources().getColor(R.color.mainTabInactive);
         //onglet1.setBackgroundColor(color);
 
