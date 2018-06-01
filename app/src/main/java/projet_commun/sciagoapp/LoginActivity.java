@@ -101,12 +101,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button registerButton = (Button)findViewById(R.id.email_register_button);
-        registerButton.setOnClickListener(new OnClickListener() {
+        Button mRegisterButton = (Button) findViewById(R.id.email_register_button);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, InscriptionActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                    startActivity(intent);
             }
         });
 
@@ -220,7 +220,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
