@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\Elie\StudioProjects\Sciago_app\SciagoApp.iml" filepath="C:\Users\Elie\StudioProjects\Sciago_app\SciagoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Sciago_app.iml" filepath="$PROJECT_DIR$/.idea/Sciago_app.iml" />
-      <module fileurl="file://C:\Users\Elie\StudioProjects\Sciago_app\Sciago_app.iml" filepath="C:\Users\Elie\StudioProjects\Sciago_app\Sciago_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Elie\StudioProjects\Sciago_app\app\app.iml" filepath="C:\Users\Elie\StudioProjects\Sciago_app\app\app.iml" />
     </modules>
   </component>
 </project>

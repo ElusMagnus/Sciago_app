@@ -16,8 +16,30 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import projet_commun.sciagoapp.utils.JSONParser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +60,26 @@ public class FundFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    // Progress Dialog
+    private ProgressDialog pDialog;
+
+    // Creating JSON Parser object
+    JSONParser jParser = new JSONParser();
+
+    ArrayList<HashMap<String, String>> usersList;
+
+    // url to get all users list
+    private static String url_all_users = "http://eabouhaydar.ddns.net/sciago/get-all-users.php";
+
+    // JSON Node names
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_USERS = "users";
+    private static final String TAG_ID = "id";
+    private static final String TAG_USERNAME = "username";
+
+    // products JSONArray
+    JSONArray users = null;
 
     public FundFragment() {
         // Required empty public constructor
@@ -76,6 +118,18 @@ public class FundFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fund, container, false);
 
+
+        ListView connect_listView = (ListView) view.findViewById(R.id.connect_listView);
+
+
+        // Hashmap for ListView
+        usersList = new ArrayList<HashMap<String, String>>();
+
+        // Loading products in Background Thread
+        new LoadAllUsers().execute();
+
+
+
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,36 +139,24 @@ public class FundFragment extends Fragment {
             }
         });
 
-        final ArrayList<String> data = new ArrayList<>();
-        data.add("Financement 1");
-        data.add("Mission 1");
-        data.add("Financement 2");
-        data.add("Financement 3");
-        data.add("Mission 2");
-        data.add("Financement 4");
-        data.add("Financement 5");
-        data.add("Mission 3");
-        data.add("Financement 6");
-        data.add("Financement 7");
-        data.add("Mission 4");
-        data.add("Financement 8");
-        data.add("Mission 5");
-        data.add("Mission 6");
-        data.add("Mission 7");
-        data.add("Mission 8");
+        //final ArrayList<String> data = new ArrayList<>();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.list_item, usersList);
+        System.out.print("AAAAAAAAAAAAAAAAAAAA");
+        System.out.print("AAAAAAAAAAAAAAAAAAAA");
 
+        System.out.print(usersList.toString());
         ListView fund_listView = (ListView) view.findViewById(R.id.fund_listView);
         fund_listView.setAdapter(adapter);
+
         fund_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String selectedData = data.get(i);
+                //String selectedData = data.get(i);
                 DetailFundFragment detailFundFragment = new DetailFundFragment();
 
                 Bundle bundle = new Bundle();
-                bundle.putString("selected_data", selectedData);
+                //bundle.putString("selected_data", selectedData);
                 detailFundFragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_fund, detailFundFragment).commit();
@@ -159,4 +201,101 @@ public class FundFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    /**
+     * Background Async Task to Load all product by making HTTP Request
+     * */
+    class LoadAllUsers extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        /**
+         * getting All products from url
+         * */
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            // getting JSON string from URL
+            JSONObject json = jParser.makeHttpRequest(url_all_users, "GET", params);
+
+            // Check your log cat for JSON reponse
+            Log.d("All Products: ", json.toString());
+
+            try {
+                // Checking for SUCCESS TAG
+                int success = json.getInt(TAG_SUCCESS);
+
+                if (success == 1) {
+                    // products found
+                    // Getting Array of Products
+                    users = json.getJSONArray(TAG_USERS);
+
+                    // looping through All Products
+                    for (int i = 0; i < users.length(); i++) {
+                        JSONObject c = users.getJSONObject(i);
+
+                        // Storing each json item in variable
+                        String id = c.getString(TAG_ID);
+                        String name = c.getString(TAG_USERNAME);
+
+                        // creating new HashMap
+                        HashMap<String, String> map = new HashMap<String, String>();
+
+                        // adding each child node to HashMap key => value
+                        map.put(TAG_ID, id);
+                        map.put(TAG_USERNAME, name);
+
+                        // adding HashList to ArrayList
+                        usersList.add(map);
+                    }
+                } else {
+                    // no products found
+                    // Launch Add New product Activity
+                    Intent i = new Intent(getActivity().getApplicationContext(),
+                            RegisterActivity.class);
+                    // Closing all previous activities
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return json.toString();
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+
+            // updating UI from Background Thread
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+
+                    /**
+                     * Updating parsed JSON data into ListView
+                     * */
+                    ListAdapter adapter = new SimpleAdapter(getActivity().getApplicationContext(),
+                            usersList, R.layout.list_item,
+                            new String[] { TAG_ID, TAG_USERNAME},
+                            new int[] { R.id.id, R.id.username });
+                    // updating listview
+                    //setListAdapter(adapter);
+                }
+            });
+            // dismiss the dialog after getting all products
+            //pDialog.dismiss();
+        }
+
+    }
+
+
 }
