@@ -41,6 +41,8 @@ import android.widget.TextView;
 
 import projet_commun.sciagoapp.utils.JSONParser;
 
+import static java.lang.Thread.sleep;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -115,37 +117,24 @@ public class FundFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        //FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        //fab.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Snackbar.make(v, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+        //                .setAction("Action", null).show();
+        //    }
+        //});
+
         View view = inflater.inflate(R.layout.fragment_fund, container, false);
-
-
-        ListView connect_listView = (ListView) view.findViewById(R.id.connect_listView);
-
-
-        // Hashmap for ListView
-        usersList = new ArrayList<HashMap<String, String>>();
-
-        // Loading products in Background Thread
+        usersList = new ArrayList<>();
         new LoadAllUsers().execute();
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        //final ArrayList<String> data = new ArrayList<>();
-
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ArrayAdapter adapter = new ArrayAdapter(getContext(), R.layout.list_item, usersList);
-        System.out.print("AAAAAAAAAAAAAAAAAAAA");
-        System.out.print("AAAAAAAAAAAAAAAAAAAA");
-
-        System.out.print(usersList.toString());
         ListView fund_listView = (ListView) view.findViewById(R.id.fund_listView);
         fund_listView.setAdapter(adapter);
 
@@ -157,9 +146,9 @@ public class FundFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 //bundle.putString("selected_data", selectedData);
-                detailFundFragment.setArguments(bundle);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_fund, detailFundFragment).commit();
+                //detailFundFragment.setArguments(bundle);
+                //FragmentManager fragmentManager = getFragmentManager();
+                //fragmentManager.beginTransaction().replace(R.id.fragment_fund, detailFundFragment).commit();
             }
         });
 
@@ -204,7 +193,7 @@ public class FundFragment extends Fragment {
 
 
     /**
-     * Background Async Task to Load all product by making HTTP Request
+     * Background Async Task to Load all users by making HTTP Request
      * */
     class LoadAllUsers extends AsyncTask<String, String, String> {
 
@@ -226,7 +215,7 @@ public class FundFragment extends Fragment {
             JSONObject json = jParser.makeHttpRequest(url_all_users, "GET", params);
 
             // Check your log cat for JSON reponse
-            Log.d("All Products: ", json.toString());
+            Log.d("All users: ", json.toString());
 
             try {
                 // Checking for SUCCESS TAG
@@ -286,7 +275,7 @@ public class FundFragment extends Fragment {
                     ListAdapter adapter = new SimpleAdapter(getActivity().getApplicationContext(),
                             usersList, R.layout.list_item,
                             new String[] { TAG_ID, TAG_USERNAME},
-                            new int[] { R.id.id, R.id.username });
+                            new int[] { R.id.username });
                     // updating listview
                     //setListAdapter(adapter);
                 }
