@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+//SonarQube
+apply plugin: 'org.sonarqube'
 
 android {
     compileSdkVersion 25
@@ -34,4 +36,28 @@ dependencies {
     implementation 'com.android.support:support-v4:25.4.0'     // for Bottom navigation bar
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+}
+
+sonarqube{
+    properties {
+        property "sonar.projectKey", "Sciago_App"
+        //more keys
+        //sonar.projectVersion=7.2
+        //credential by default
+        //sonar.login='admin'
+        //sonar.password='admin'
+        //your base project directory
+        /*sonar.projectBaseDir="C://Users/tim-b/AndroidStudioProjects/SciagoApp"
+        //define a key for your project. Everytime that you push a new version of code, SonarQube will compare it according yout projectKey (usually this key doesn't change along of the time)
+                sonar.projectKey=Example-Proj-android
+                //name that will appear in the list of your projects in sonarqube
+                sonar.projectName=Example-Proj-android
+                //project sources
+                sonar.sources=app/src/main/java
+                sonar.java.source=app/src/main/java
+                //directory of project's binaries. Look inside your build/intermediates/class dir
+                sonar.java.binaries=app/build/intermediates/classes/prod/debug/com/example/android/architecture/blueprints/todoapp
+                //(optional),directories if you want to exclude something
+        //sonar.exclusions=app/something*/
+    }
 }
